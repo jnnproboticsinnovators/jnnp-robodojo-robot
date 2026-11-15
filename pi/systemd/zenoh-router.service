@@ -1,0 +1,12 @@
+[Unit]
+Description=Zenoh router for ROS 2
+After=network-online.target
+
+[Service]
+User=CHANGE_TO_PI_USERNAME
+Environment=RUST_LOG=error,zenoh::net::routing::dispatcher::pubsub=off
+ExecStart=/bin/bash -c 'source /opt/ros/jazzy/setup.bash && exec ros2 run rmw_zenoh_cpp rmw_zenohd'
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

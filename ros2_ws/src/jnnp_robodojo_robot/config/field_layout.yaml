@@ -1,0 +1,107 @@
+# Game field layout in the "field" frame (metres). Used by field_markers.py for RViz labels.
+walls:
+- [0.0, 0.0, 6.7036, 0.0]
+- [0.0, 4.868, 6.7036, 4.868]
+- [0.0, 0.0, 0.0, 4.868]
+- [6.7036, 0.0, 6.7036, 4.868]
+- [0.8044, 3.6997, 0.8044, 2.7017]
+- [0.8044, 2.7017, 3.2512, 2.7017]
+- [3.2512, 2.7017, 3.2512, 1.0223]
+- [3.2512, 1.0223, 4.7394, 1.0223]
+- [4.7394, 1.0223, 4.7394, 2.7748]
+- [4.7394, 2.7748, 5.8991, 2.7748]
+- [5.9327, 2.7748, 5.9327, 4.868]
+- [1.6089, 3.797, 3.1507, 3.797]
+- [1.6089, 3.797, 1.6089, 4.1865]
+- [3.9551, 2.2393, 3.9551, 4.868]
+- [4.6925, 3.797, 4.6925, 4.868]
+- [5.2958, 3.797, 5.2958, 4.868]
+- [4.9942, 1.363, 5.8991, 1.363]
+- [4.9942, 2.6287, 5.8991, 2.6287]
+zones:
+- name: offload_grey
+  label: Offload grey
+  cx: 4.3238
+  cy: 4.3125
+  lx: 0.6574
+  ly: 1.031
+  rgba: [0.3, 0.3, 0.34, 1.0]
+- name: offload_red
+  label: Offload red
+  cx: 4.9942
+  cy: 4.3125
+  lx: 0.5233
+  ly: 1.031
+  rgba: [0.7, 0.15, 0.15, 1.0]
+- name: start_pad
+  label: Start
+  cx: 6.3181
+  cy: 4.1178
+  lx: 0.6909
+  ly: 1.4204
+  rgba: [0.2, 0.8, 0.4, 1.0]
+- name: loading_zone
+  label: Loading zone
+  cx: 5.4466
+  cy: 1.9959
+  lx: 0.905
+  ly: 1.1857
+  rgba: [0.55, 0.75, 0.3, 1.0]
+- name: loading_plate
+  label: Loading plate
+  cx: 5.4802
+  cy: 1.5671
+  lx: 0.3687
+  ly: 2.3553
+  rgba: [0.5, 0.78, 0.42, 1.0]
+terrain:
+- name: ramp_sand
+  label: Ramp + sand
+  cx: 3.9847
+  cy: 0.6823
+  lx: 1.4
+  ly: 0.6
+  rgba: [0.88, 0.76, 0.5, 1.0]
+- name: ramp_gravel
+  label: Ramp + gravel
+  cx: 2.3759
+  cy: 3.457
+  lx: 1.4
+  ly: 0.6
+  rgba: [0.42, 0.42, 0.44, 1.0]
+- name: grater
+  label: Grater
+  cx: 3.9953
+  cy: 1.78
+  lx: 1.4082
+  ly: 0.585
+  rgba: [0.25, 0.25, 0.25, 1]
+- name: grass
+  label: Grass
+  cx: 2.3798
+  cy: 4.3325
+  lx: 1.4077
+  ly: 0.971
+  rgba: [0.25, 0.6, 0.2, 1]
+labels:
+- {key: ramp_sand, num: '1', text: RAMP + SAND, x: 3.9847, y: 0.6823}
+- {key: ramp_gravel, num: '1', text: RAMP + GRAVEL, x: 2.3759, y: 3.457}
+- {key: grater, num: '1', text: GRATER, x: 3.9953, y: 2.45}
+- {key: grass, num: '1', text: GRASS, x: 2.3798, y: 4.3325}
+- {key: barrier, num: '2', text: DYNAMIC BARRIER, x: 1.2066, y: 4.2838}
+- {key: cylinders, num: '3', text: RANDOM CYLINDERS, x: 1.4748, y: 0.17}
+- {key: loading, num: '4', text: LOADING ZONE, x: 5.4802, y: 0.2}
+- {key: offload, num: '5', text: OFFLOADING ZONES, x: 4.659, y: 3.2859}
+- {key: start, num: '6', text: START, x: 6.3181, y: 3.1155}
+barrier: {x: 1.6089, y: 4.2415, length: 0.5815}
+cylinder_spots:
+- [0.804, 0.682]
+- [1.475, 0.682]
+- [2.145, 0.682]
+- [0.804, 1.46]
+- [1.475, 1.46]
+- [2.145, 1.46]
+- [0.804, 2.239]
+- [1.475, 2.239]
+- [2.145, 2.239]
+start: {x: 6.318, y: 4.186, yaw: -1.5708}

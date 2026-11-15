@@ -1,0 +1,531 @@
+<?xml version="1.0"?>
+<!--
+  RoboDojo competition field, walls from Figure 1 (top view with dimensions).
+  Field 6.70356 m x 4.868 m, walls 0.3 m high. Origin = front-left corner.
+  ADJUST the numbers once you have the real measurements.
+    Walls/corridors/bays/loading walls: measured from Figure 1.
+    Zone colours and terrain placement: matched to Figure 2 (adjust if needed).
+-->
+<sdf version="1.9">
+  <world name="robodojo_field">
+    <physics name="1ms" type="ignored"><max_step_size>0.001</max_step_size><real_time_factor>1.0</real_time_factor></physics>
+    <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics"/>
+    <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"/>
+    <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"/>
+    <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors"><render_engine>ogre2</render_engine></plugin>
+    <plugin filename="gz-sim-imu-system" name="gz::sim::systems::Imu"/>
+
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.9 0.9 0.9 1</diffuse><specular>0.2 0.2 0.2 1</specular>
+      <direction>-0.4 0.2 -0.9</direction>
+    </light>
+
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="c"><geometry><plane><normal>0 0 1</normal><size>20 20</size></plane></geometry></collision>
+        <visual name="v"><geometry><plane><normal>0 0 1</normal><size>20 20</size></plane></geometry>
+          <material><ambient>0.6 0.6 0.6 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name='field_floor'>
+      <static>true</static>
+      <pose>3.352 2.434 -0.005 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>6.70356 4.868 0.01</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>6.70356 4.868 0.01</size></box></geometry><material><ambient>0.8 0.62 0.3 1</ambient><diffuse>0.8 0.62 0.3 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='wall_front'>
+      <static>true</static>
+      <pose>3.352 0.000 0.150 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>6.733560000000001 0.03 0.3</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>6.733560000000001 0.03 0.3</size></box></geometry><material><ambient>0.72 0.53 0.2 1</ambient><diffuse>0.72 0.53 0.2 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='wall_back'>
+      <static>true</static>
+      <pose>3.352 4.868 0.150 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>6.733560000000001 0.03 0.3</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>6.733560000000001 0.03 0.3</size></box></geometry><material><ambient>0.72 0.53 0.2 1</ambient><diffuse>0.72 0.53 0.2 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='wall_left'>
+      <static>true</static>
+      <pose>0.000 2.434 0.150 0.0000 0.0000 1.5708</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>4.898000000000001 0.03 0.3</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>4.898000000000001 0.03 0.3</size></box></geometry><material><ambient>0.72 0.53 0.2 1</ambient><diffuse>0.72 0.53 0.2 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='wall_right'>
+      <static>true</static>
+      <pose>6.704 2.434 0.150 0.0000 0.0000 1.5708</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>4.898000000000001 0.03 0.3</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>4.898000000000001 0.03 0.3</size></box></geometry><material><ambient>0.72 0.53 0.2 1</ambient><diffuse>0.72 0.53 0.2 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='wall_a'>
+      <static>true</static>
+      <pose>3.334 3.590 0.150 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>5.298 0.03 0.3</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>5.298 0.03 0.3</size></box></geometry><material><ambient>0.72 0.53 0.2 1</ambient><diffuse>0.72 0.53 0.2 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='wall_b'>
+      <static>true</static>
+      <pose>2.625 2.849 0.150 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>5.28 0.03 0.3</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>5.28 0.03 0.3</size></box></geometry><material><ambient>0.72 0.53 0.2 1</ambient><diffuse>0.72 0.53 0.2 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='wall_c'>
+      <static>true</static>
+      <pose>3.334 2.154 0.150 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>5.298 0.03 0.3</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>5.298 0.03 0.3</size></box></geometry><material><ambient>0.72 0.53 0.2 1</ambient><diffuse>0.72 0.53 0.2 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='wall_right_column'>
+      <static>true</static>
+      <pose>5.968 3.511 0.150 0.0000 0.0000 -1.5708</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>2.7439999999999998 0.03 0.3</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>2.7439999999999998 0.03 0.3</size></box></geometry><material><ambient>0.72 0.53 0.2 1</ambient><diffuse>0.72 0.53 0.2 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='tooth_b0'>
+      <static>true</static>
+      <pose>1.407 2.709 0.150 0.0000 0.0000 -1.5708</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>0.3100000000000003 0.03 0.3</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>0.3100000000000003 0.03 0.3</size></box></geometry><material><ambient>0.72 0.53 0.2 1</ambient><diffuse>0.72 0.53 0.2 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='tooth_b1'>
+      <static>true</static>
+      <pose>1.843 2.709 0.150 0.0000 0.0000 -1.5708</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>0.3100000000000003 0.03 0.3</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>0.3100000000000003 0.03 0.3</size></box></geometry><material><ambient>0.72 0.53 0.2 1</ambient><diffuse>0.72 0.53 0.2 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='tooth_b2'>
+      <static>true</static>
+      <pose>4.352 2.709 0.150 0.0000 0.0000 -1.5708</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>0.3100000000000003 0.03 0.3</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>0.3100000000000003 0.03 0.3</size></box></geometry><material><ambient>0.72 0.53 0.2 1</ambient><diffuse>0.72 0.53 0.2 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='tooth_b3'>
+      <static>true</static>
+      <pose>4.787 2.709 0.150 0.0000 0.0000 -1.5708</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>0.3100000000000003 0.03 0.3</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>0.3100000000000003 0.03 0.3</size></box></geometry><material><ambient>0.72 0.53 0.2 1</ambient><diffuse>0.72 0.53 0.2 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='tooth_b4'>
+      <static>true</static>
+      <pose>5.204 2.709 0.150 0.0000 0.0000 -1.5708</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>0.3100000000000003 0.03 0.3</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>0.3100000000000003 0.03 0.3</size></box></geometry><material><ambient>0.72 0.53 0.2 1</ambient><diffuse>0.72 0.53 0.2 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='tooth_c0'>
+      <static>true</static>
+      <pose>1.250 2.304 0.150 0.0000 0.0000 1.5708</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>0.32999999999999985 0.03 0.3</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>0.32999999999999985 0.03 0.3</size></box></geometry><material><ambient>0.72 0.53 0.2 1</ambient><diffuse>0.72 0.53 0.2 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='tooth_c1'>
+      <static>true</static>
+      <pose>1.667 2.304 0.150 0.0000 0.0000 1.5708</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>0.32999999999999985 0.03 0.3</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>0.32999999999999985 0.03 0.3</size></box></geometry><material><ambient>0.72 0.53 0.2 1</ambient><diffuse>0.72 0.53 0.2 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='tooth_c2'>
+      <static>true</static>
+      <pose>4.185 2.304 0.150 0.0000 0.0000 1.5708</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>0.32999999999999985 0.03 0.3</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>0.32999999999999985 0.03 0.3</size></box></geometry><material><ambient>0.72 0.53 0.2 1</ambient><diffuse>0.72 0.53 0.2 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='tooth_c3'>
+      <static>true</static>
+      <pose>4.611 2.304 0.150 0.0000 0.0000 1.5708</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>0.32999999999999985 0.03 0.3</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>0.32999999999999985 0.03 0.3</size></box></geometry><material><ambient>0.72 0.53 0.2 1</ambient><diffuse>0.72 0.53 0.2 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='tooth_c4'>
+      <static>true</static>
+      <pose>5.037 2.304 0.150 0.0000 0.0000 1.5708</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>0.32999999999999985 0.03 0.3</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>0.32999999999999985 0.03 0.3</size></box></geometry><material><ambient>0.72 0.53 0.2 1</ambient><diffuse>0.72 0.53 0.2 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='stub_top_left'>
+      <static>true</static>
+      <pose>1.435 4.646 0.150 0.0000 0.0000 -1.5708</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>0.474 0.03 0.3</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>0.474 0.03 0.3</size></box></geometry><material><ambient>0.72 0.53 0.2 1</ambient><diffuse>0.72 0.53 0.2 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='ramp_gravel_0'>
+      <static>true</static>
+      <pose>3.042 4.508 0.015 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>0.7030000000000001 0.7 0.03</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>0.7030000000000001 0.7 0.03</size></box></geometry><material><ambient>0.42 0.42 0.45 1</ambient><diffuse>0.42 0.42 0.45 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='ramp_gravel_1'>
+      <static>true</static>
+      <pose>3.755 4.508 0.030 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>0.7029999999999996 0.7 0.06</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>0.7029999999999996 0.7 0.06</size></box></geometry><material><ambient>0.42 0.42 0.45 1</ambient><diffuse>0.42 0.42 0.45 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='ramp_gravel_2'>
+      <static>true</static>
+      <pose>4.482 4.508 0.015 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>0.7310000000000005 0.7 0.03</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>0.7310000000000005 0.7 0.03</size></box></geometry><material><ambient>0.42 0.42 0.45 1</ambient><diffuse>0.42 0.42 0.45 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='gravel_0'>
+      <static>true</static>
+      <pose>2.800 4.358 0.038 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>0.04 0.04 0.016</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>0.04 0.04 0.016</size></box></geometry><material><ambient>0.3 0.3 0.3 1</ambient><diffuse>0.3 0.3 0.3 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='gravel_1'>
+      <static>true</static>
+      <pose>3.000 4.658 0.038 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>0.04 0.04 0.016</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>0.04 0.04 0.016</size></box></geometry><material><ambient>0.3 0.3 0.3 1</ambient><diffuse>0.3 0.3 0.3 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='gravel_2'>
+      <static>true</static>
+      <pose>3.200 4.358 0.038 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>0.04 0.04 0.016</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>0.04 0.04 0.016</size></box></geometry><material><ambient>0.3 0.3 0.3 1</ambient><diffuse>0.3 0.3 0.3 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='gravel_3'>
+      <static>true</static>
+      <pose>3.400 4.658 0.068 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>0.04 0.04 0.016</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>0.04 0.04 0.016</size></box></geometry><material><ambient>0.3 0.3 0.3 1</ambient><diffuse>0.3 0.3 0.3 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='gravel_4'>
+      <static>true</static>
+      <pose>3.600 4.358 0.068 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>0.04 0.04 0.016</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>0.04 0.04 0.016</size></box></geometry><material><ambient>0.3 0.3 0.3 1</ambient><diffuse>0.3 0.3 0.3 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='gravel_5'>
+      <static>true</static>
+      <pose>3.800 4.658 0.068 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>0.04 0.04 0.016</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>0.04 0.04 0.016</size></box></geometry><material><ambient>0.3 0.3 0.3 1</ambient><diffuse>0.3 0.3 0.3 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='gravel_6'>
+      <static>true</static>
+      <pose>4.000 4.358 0.068 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>0.04 0.04 0.016</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>0.04 0.04 0.016</size></box></geometry><material><ambient>0.3 0.3 0.3 1</ambient><diffuse>0.3 0.3 0.3 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='gravel_7'>
+      <static>true</static>
+      <pose>4.200 4.658 0.038 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>0.04 0.04 0.016</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>0.04 0.04 0.016</size></box></geometry><material><ambient>0.3 0.3 0.3 1</ambient><diffuse>0.3 0.3 0.3 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='gravel_8'>
+      <static>true</static>
+      <pose>4.400 4.358 0.038 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>0.04 0.04 0.016</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>0.04 0.04 0.016</size></box></geometry><material><ambient>0.3 0.3 0.3 1</ambient><diffuse>0.3 0.3 0.3 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='gravel_9'>
+      <static>true</static>
+      <pose>4.600 4.658 0.038 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>0.04 0.04 0.016</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>0.04 0.04 0.016</size></box></geometry><material><ambient>0.3 0.3 0.3 1</ambient><diffuse>0.3 0.3 0.3 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='ramp_sand_up'>
+      <static>true</static>
+      <pose>1.900 3.800 0.025 0.0000 -0.0997 0.0000</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>0.5024937810560445 0.4 0.01</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>0.5024937810560445 0.4 0.01</size></box></geometry><material><ambient>0.5 0.5 0.52 1</ambient><diffuse>0.5 0.5 0.52 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='ramp_sand_top'>
+      <static>true</static>
+      <pose>2.400 3.800 0.050 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>0.5 0.4 0.01</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>0.5 0.4 0.01</size></box></geometry><material><ambient>0.5 0.5 0.52 1</ambient><diffuse>0.5 0.5 0.52 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='ramp_sand_down'>
+      <static>true</static>
+      <pose>2.900 3.800 0.025 0.0000 0.0997 0.0000</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>0.5024937810560445 0.4 0.01</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>0.5024937810560445 0.4 0.01</size></box></geometry><material><ambient>0.5 0.5 0.52 1</ambient><diffuse>0.5 0.5 0.52 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='sand'>
+      <static>true</static>
+      <pose>4.200 3.800 0.002 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        
+        <visual name='v'><geometry><box><size>1.6 0.4 0.004</size></box></geometry><material><ambient>0.93 0.85 0.6 1</ambient><diffuse>0.93 0.85 0.6 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='grass'>
+      <static>true</static>
+      <pose>2.900 3.220 0.002 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        
+        <visual name='v'><geometry><box><size>4.2 0.7 0.004</size></box></geometry><material><ambient>0.4 0.65 0.3 1</ambient><diffuse>0.4 0.65 0.3 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='dynamic_obstacle_post'>
+      <static>true</static>
+      <pose>2.550 4.788 0.150 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>0.06 0.06 0.3</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>0.06 0.06 0.3</size></box></geometry><material><ambient>0.9 0.9 0.9 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='dynamic_obstacle_arm'>
+      <static>true</static>
+      <pose>2.550 4.468 0.250 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>0.04 0.62 0.04</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>0.04 0.62 0.04</size></box></geometry><material><ambient>0.85 0.2 0.2 1</ambient><diffuse>0.85 0.2 0.2 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='cylinder_1_pad'>
+      <static>true</static>
+      <pose>0.400 4.468 0.002 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        
+        <visual name='v'><geometry><box><size>0.3 0.3 0.004</size></box></geometry><material><ambient>0.7 0.52 0.25 1</ambient><diffuse>0.7 0.52 0.25 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='cylinder_1'>
+      <static>false</static>
+      <pose>0.400 4.468 0.125 0 0 0</pose>
+      <link name='link'><inertial><mass>0.3</mass><inertia><ixx>0.001984</ixx><iyy>0.001984</iyy><izz>0.000844</izz><ixy>0</ixy><ixz>0</ixz><iyz>0</iyz></inertia></inertial>
+        <collision name='c'><geometry><cylinder><radius>0.075</radius><length>0.25</length></cylinder></geometry></collision>
+        <visual name='v'><geometry><cylinder><radius>0.075</radius><length>0.25</length></cylinder></geometry><material><ambient>0.82 0.82 0.82 1</ambient><diffuse>0.82 0.82 0.82 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='cylinder_2_pad'>
+      <static>true</static>
+      <pose>1.000 4.468 0.002 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        
+        <visual name='v'><geometry><box><size>0.3 0.3 0.004</size></box></geometry><material><ambient>0.7 0.52 0.25 1</ambient><diffuse>0.7 0.52 0.25 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='cylinder_2'>
+      <static>false</static>
+      <pose>1.000 4.468 0.125 0 0 0</pose>
+      <link name='link'><inertial><mass>0.3</mass><inertia><ixx>0.001984</ixx><iyy>0.001984</iyy><izz>0.000844</izz><ixy>0</ixy><ixz>0</ixz><iyz>0</iyz></inertia></inertial>
+        <collision name='c'><geometry><cylinder><radius>0.075</radius><length>0.25</length></cylinder></geometry></collision>
+        <visual name='v'><geometry><cylinder><radius>0.075</radius><length>0.25</length></cylinder></geometry><material><ambient>0.82 0.82 0.82 1</ambient><diffuse>0.82 0.82 0.82 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='cylinder_judges_pad'>
+      <static>true</static>
+      <pose>0.700 3.818 0.002 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        
+        <visual name='v'><geometry><box><size>0.3 0.3 0.004</size></box></geometry><material><ambient>0.7 0.52 0.25 1</ambient><diffuse>0.7 0.52 0.25 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='cylinder_judges'>
+      <static>false</static>
+      <pose>0.700 3.818 0.125 0 0 0</pose>
+      <link name='link'><inertial><mass>0.3</mass><inertia><ixx>0.001984</ixx><iyy>0.001984</iyy><izz>0.000844</izz><ixy>0</ixy><ixz>0</ixz><iyz>0</iyz></inertia></inertial>
+        <collision name='c'><geometry><cylinder><radius>0.075</radius><length>0.25</length></cylinder></geometry></collision>
+        <visual name='v'><geometry><cylinder><radius>0.075</radius><length>0.25</length></cylinder></geometry><material><ambient>0.82 0.82 0.82 1</ambient><diffuse>0.82 0.82 0.82 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='loading_wall_top'>
+      <static>true</static>
+      <pose>3.973 1.435 0.150 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>1.7890000000000004 0.03 0.3</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>1.7890000000000004 0.03 0.3</size></box></geometry><material><ambient>0.72 0.53 0.2 1</ambient><diffuse>0.72 0.53 0.2 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='loading_wall_bottom'>
+      <static>true</static>
+      <pose>3.973 0.722 0.150 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>1.7890000000000004 0.03 0.3</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>1.7890000000000004 0.03 0.3</size></box></geometry><material><ambient>0.72 0.53 0.2 1</ambient><diffuse>0.72 0.53 0.2 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='loading_zone'>
+      <static>true</static>
+      <pose>3.970 1.080 0.002 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        
+        <visual name='v'><geometry><box><size>1.7 0.66 0.004</size></box></geometry><material><ambient>0.55 0.8 0.5 1</ambient><diffuse>0.55 0.8 0.5 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='loading_bar'>
+      <static>true</static>
+      <pose>3.782 1.080 0.310 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        <collision name='c'><geometry><box><size>0.21 1.27 0.02</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>0.21 1.27 0.02</size></box></geometry><material><ambient>0.55 0.85 0.55 1</ambient><diffuse>0.55 0.85 0.55 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='loading_bar_hole_0'>
+      <static>true</static>
+      <pose>3.782 0.600 0.001 0 0 0</pose>
+      <link name='link'>
+        <collision name='c'><geometry><cylinder><radius>0.035</radius><length>0.001</length></cylinder></geometry></collision>
+        <visual name='v'><geometry><cylinder><radius>0.035</radius><length>0.001</length></cylinder></geometry><material><ambient>0.35 0.55 0.35 1</ambient><diffuse>0.35 0.55 0.35 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='loading_bar_hole_1'>
+      <static>true</static>
+      <pose>3.782 1.080 0.001 0 0 0</pose>
+      <link name='link'>
+        <collision name='c'><geometry><cylinder><radius>0.035</radius><length>0.001</length></cylinder></geometry></collision>
+        <visual name='v'><geometry><cylinder><radius>0.035</radius><length>0.001</length></cylinder></geometry><material><ambient>0.35 0.55 0.35 1</ambient><diffuse>0.35 0.55 0.35 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='loading_bar_hole_2'>
+      <static>true</static>
+      <pose>3.782 1.560 0.001 0 0 0</pose>
+      <link name='link'>
+        <collision name='c'><geometry><cylinder><radius>0.035</radius><length>0.001</length></cylinder></geometry></collision>
+        <visual name='v'><geometry><cylinder><radius>0.035</radius><length>0.001</length></cylinder></geometry><material><ambient>0.35 0.55 0.35 1</ambient><diffuse>0.35 0.55 0.35 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='load_1'>
+      <static>false</static>
+      <pose>3.350 1.080 0.030 0.0000 0.0000 0.0000</pose>
+      <link name='link'><inertial><mass>0.1</mass><inertia><ixx>0.000060</ixx><iyy>0.000060</iyy><izz>0.000060</izz><ixy>0</ixy><ixz>0</ixz><iyz>0</iyz></inertia></inertial>
+        <collision name='c'><geometry><box><size>0.06 0.06 0.06</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>0.06 0.06 0.06</size></box></geometry><material><ambient>0.85 0.15 0.15 1</ambient><diffuse>0.85 0.15 0.15 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='load_2'>
+      <static>false</static>
+      <pose>3.600 1.080 0.030 0.0000 0.0000 0.0000</pose>
+      <link name='link'><inertial><mass>0.1</mass><inertia><ixx>0.000060</ixx><iyy>0.000060</iyy><izz>0.000060</izz><ixy>0</ixy><ixz>0</ixz><iyz>0</iyz></inertia></inertial>
+        <collision name='c'><geometry><box><size>0.06 0.06 0.06</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>0.06 0.06 0.06</size></box></geometry><material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='load_3'>
+      <static>false</static>
+      <pose>3.850 1.080 0.030 0.0000 0.0000 0.0000</pose>
+      <link name='link'><inertial><mass>0.1</mass><inertia><ixx>0.000060</ixx><iyy>0.000060</iyy><izz>0.000060</izz><ixy>0</ixy><ixz>0</ixz><iyz>0</iyz></inertia></inertial>
+        <collision name='c'><geometry><box><size>0.06 0.06 0.06</size></box></geometry></collision>
+        <visual name='v'><geometry><box><size>0.06 0.06 0.06</size></box></geometry><material><ambient>0.15 0.35 0.85 1</ambient><diffuse>0.15 0.35 0.85 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='line_room_1'>
+      <static>true</static>
+      <pose>0.806 1.077 0.002 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        
+        <visual name='v'><geometry><box><size>0.03 2.1540000000000004 0.004</size></box></geometry><material><ambient>0.35 0.35 0.35 1</ambient><diffuse>0.35 0.35 0.35 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='line_room_2'>
+      <static>true</static>
+      <pose>2.611 1.077 0.002 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        
+        <visual name='v'><geometry><box><size>0.03 2.1540000000000004 0.004</size></box></geometry><material><ambient>0.35 0.35 0.35 1</ambient><diffuse>0.35 0.35 0.35 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='offload_red'>
+      <static>true</static>
+      <pose>1.710 0.650 0.002 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        
+        <visual name='v'><geometry><box><size>1.75 1.25 0.004</size></box></geometry><material><ambient>0.8 0.25 0.25 1</ambient><diffuse>0.8 0.25 0.25 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='offload_blue'>
+      <static>true</static>
+      <pose>1.250 1.700 0.002 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        
+        <visual name='v'><geometry><box><size>0.8 0.7 0.004</size></box></geometry><material><ambient>0.25 0.4 0.85 1</ambient><diffuse>0.25 0.4 0.85 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='offload_black'>
+      <static>true</static>
+      <pose>2.150 1.700 0.002 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        
+        <visual name='v'><geometry><box><size>0.8 0.7 0.004</size></box></geometry><material><ambient>0.25 0.25 0.28 1</ambient><diffuse>0.25 0.25 0.28 1</diffuse></material></visual>
+      </link>
+    </model>
+    <model name='start_zone'>
+      <static>true</static>
+      <pose>6.340 0.400 0.002 0.0000 0.0000 0.0000</pose>
+      <link name='link'>
+        
+        <visual name='v'><geometry><box><size>0.6 0.6 0.004</size></box></geometry><material><ambient>0.35 0.75 0.4 1</ambient><diffuse>0.35 0.75 0.4 1</diffuse></material></visual>
+      </link>
+    </model>
+  </world>
+</sdf>

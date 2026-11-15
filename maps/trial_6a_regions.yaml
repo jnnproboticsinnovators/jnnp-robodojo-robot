@@ -1,0 +1,18 @@
+# Written by mark mode (mark:=true). Map frame, metres. Heading = load point towards offload point.
+# Where the robot is parked at launch (auto_pose:=true). (0,0,0) = where you started mapping, facing the same way.
+start: {x: 1.751, y: 0.075, yaw: -0.538}
+# Home = the start pose: the robot returns here and turns back to this heading after every region.
+home:
+  - {x: 1.751, y: 0.075, yaw: -0.538}
+load_1:
+  - {x: 1.134, y: -0.868, yaw: 1.936}
+offload_1:
+  - {x: 0.400, y: 1.051, yaw: 1.936}
+load_2:
+  - {x: 0.851, y: -1.385, yaw: 1.526}
+offload_2:
+  - {x: 0.951, y: 0.851, yaw: 1.526}
+load_3:
+  - {x: 0.500, y: -1.836, yaw: 1.286}
+offload_3:
+  - {x: 1.101, y: 0.217, yaw: 1.286}
