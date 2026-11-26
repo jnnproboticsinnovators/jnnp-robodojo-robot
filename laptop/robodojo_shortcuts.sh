@@ -270,7 +270,7 @@ function _pi_find {
     return 0
   elif [ -n "$ip" ]; then
     echo "The Pi IS on this Wi-Fi ($ip) but does not answer. Wait 30 s (still starting?) and try again."
-    echo "Still no answer on jnnp_net? The router's 'Isolate Clients' is blocking it - untick it."
+    echo "Still no answer on the router? The router's 'Isolate Clients' is blocking it - untick it."
     return 1
   fi
   echo "Robot (Pi) not found on any hotspot (tried: $PI ${PI_LIST:-})."
